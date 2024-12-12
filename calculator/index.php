@@ -39,10 +39,6 @@
                     $arithmetic_operation = $_POST['arithmetic_operation'];
                     $result = null;
 
-                    // echo $first_number . "<br>";
-                    // echo $second_number . "<br>";
-                    // echo $arithmetic_operation . "<br>";
-
                     switch($arithmetic_operation){
                         case "add":
                             $result = $first_number + $second_number;
