@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 900;
+    font-style: normal;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+#main form{
+    background-color: bisque;
+    padding: 50px;
+    margin: 25px;
+    border-radius: 15px;
+    
+}
+
+input[type=number]{
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+::placeholder{
+    color: black;
+}
+
+input[type=submit]{
+    padding: 10px;
+    width: 100%;
+    border: 0px solid black;
+    border-radius: 5px;
+    background-color: rgb(255, 140, 0);
+    cursor: pointer;
+}
