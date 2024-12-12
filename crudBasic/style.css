@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 900;
+    font-style: normal;
+}
+
+#header{
+    display: flex;
+    justify-content: space-around;
+    background-color:darksalmon;
+    align-items: center;
+    padding: 15px;
+}
+
+#navbar ul{
+    display: flex;
+}
+
+#navbar ul li{
+    list-style: none;
+}
+
+#navbar ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+button, input[type=submit]{
+    padding: 15px 15px;
+    background-color: black;
+    border: 0px solid black;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.buttons button a{
+    color: white;
+    text-decoration: none;
+}
+
+#register_form, #login_form{
+    background-color: darksalmon;
+    width: 25%;
+    padding: 50px 25px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 30px black;
+}
+
+#register_form h2, #login_form h2{
+    text-align: center;
+}
+
+input{
+    padding: 10px;
+    width: 100%;
+}
+
+input[type=email], input[type=password], input[type=text]{
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+::placeholder{
+    color: black;
+}
+
+.form_container, #all_users_container{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+}
+
+p{
+    text-align: center;
+}
+
+table{
+    /* border: 1px solid black; */
+    background-color: darksalmon;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+table th, table td{
+    /* border: 1px solid black; */
+    padding: 10px 20px;
+}
+
+table tr:nth-child(even){
+    background-color: blanchedalmond;
+}
+
+table button{
+    padding: 0px;
+    background-color: transparent;
+}
+
+#hero{
+    min-height: 90vh;
+    background-color: blanchedalmond;
+    position: relative;
+}
+
+.hero_content{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: darksalmon;
+    padding: 50px;
+    border-radius: 25px;
+    max-width: 40%;
+}
+
+.hero_content h1{
+    font-size: 64px;
+}
