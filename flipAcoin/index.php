@@ -29,6 +29,7 @@
             </div>
             <form action="index.php" method="post">
                 <select name="side">
+                    <option value="0" selected>SELECT A SIDE</option>
                     <option value="1">HEADS</option>
                     <option value="2">TAILS</option>
                 </select><br><br>

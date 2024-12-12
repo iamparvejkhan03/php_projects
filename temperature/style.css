@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 900;
+    font-style: normal;
+}
+
+::placeholder{
+    color: white;
+}
+
+#main{
+    background-color:peachpuff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#temperature_converter{
+    background-color: rgb(43, 41, 41);
+    min-width: 60%;
+    padding: 100px 100px;
+    border-radius: 25px;
+    box-shadow: 15px 15px 50px black;
+}
+
+.heading_container{
+    border-left: 5px solid peachpuff;
+    padding: 10px;
+}
+
+.heading_container h1, .result_heading{
+    color: peachpuff;
+}
+
+form input[type=number]{
+    padding: 15px 10px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(120, 116, 116);
+    color: white;
+    font-size: 17px;
+}
+
+#temperature_converter form select{
+    padding: 15px 10px;
+    width: 100%;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+.result_heading{
+    color: peachpuff;
+    text-align: center;
+    padding: 15px;
+}
+
+form input[type=submit]{
+    padding: 15px 25px;
+    background-color: peachpuff;
+    color: rgb(239, 94, 94)puff;
+    border: 0px solid black;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+    width: 100%;
+}
+
+label{
+    color: white;
+}
