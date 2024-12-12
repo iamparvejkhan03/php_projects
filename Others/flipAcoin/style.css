@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 900;
+    font-style: normal;
+}
+
+#main{
+    min-height: 100vh;
+    background-color: mediumslateblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#flip_a_coin{
+    background-color: rgb(43, 41, 41);
+    min-width: 40%;
+    display: flex;
+    justify-content: space-between;
+    padding: 100px;
+    align-items: center;
+    border-radius: 30px;
+}
+
+#flip_a_coin form{
+    width: 50%;
+    text-align: center;
+}
+
+#flip_a_coin form select{
+    width: 100%;
+    padding: 10px;
+    font-size: 17px;
+}
+
+#flip_a_coin form input[type=submit]{
+    padding: 10px 20px;
+    font-size: 17px;
+    background-color: mediumslateblue;
+    border: 0px solid black;
+    border-radius: 5px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+}
+
+.heading_container{
+    border-left: 5px solid mediumslateblue;
+    padding: 10px;
+}
+
+.heading_container h1{
+    color: mediumslateblue;
+}
