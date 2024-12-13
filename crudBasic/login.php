@@ -1,3 +1,7 @@
+<?php
+    include("database.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,7 @@
         <div id="login_form">
             <h2>LOGIN NOW!</h2><br><br>
             <form action="login.php" method="post">
-                <input type="email" name="email" placeholder="EMAIL ADDRESS"><br><br>
+                <input type="text" name="username" placeholder="USERNAME"><br><br>
                 <input type="password" name="password" placeholder="PASSWORD"><br><br>
                 <input type="submit" name="login" value="LOGIN">
             </form><br>
@@ -23,3 +27,28 @@
     </div>
 </body>
 </html>
+
+<?php
+    if(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $select = "SELECT password FROM users WHERE username = '$username' AND password = '$password'";
+        $mysqli_select = mysqli_query($conn, $select);
+        
+        if(!$mysqli_select){
+            echo "Could not fetch user!";
+        }else{
+            foreach($mysqli_select as $arr){
+                foreach($arr as $key=>$value){
+                    if($value == $password){
+                        session_start();
+                        $_SESSION['username'] = $username;
+                        $_SESSION['password'] = $password;
+                        header('Location: users.php');
+                    }
+                }
+            }
+        }
+    }
+?>

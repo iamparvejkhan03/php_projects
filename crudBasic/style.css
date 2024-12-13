@@ -70,7 +70,7 @@ input[type=email], input[type=password], input[type=text]{
     color: black;
 }
 
-.form_container, #all_users_container{
+.form_container{
     display: flex;
     min-height: 100vh;
     justify-content: center;
@@ -78,12 +78,26 @@ input[type=email], input[type=password], input[type=text]{
     background-color: blanchedalmond;
 }
 
+#all_users_container{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: blanchedalmond;
+    position: relative;
+}
+
 p{
     text-align: center;
 }
 
+caption{
+    font-size: 32px;
+}
+
 table{
     /* border: 1px solid black; */
+    margin-top: 100px;
     background-color: darksalmon;
     text-align: center;
     border-collapse: collapse;
@@ -123,4 +137,30 @@ table button{
 
 .hero_content h1{
     font-size: 64px;
+}
+
+.username_in_header a{
+    color: black;
+    text-decoration: none;
+    vertical-align: middle;
+    margin: 0 10px;
+}
+
+.username_in_header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#update_password_form{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 10px;
+    background-color: darksalmon;
+    box-shadow: 5px 5px 30px black;
 }

@@ -1,3 +1,7 @@
+<?php
+    include("database.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +16,13 @@
 <body>
     <div id="main">
         <div id="header">
-            <h1>Logo</h1>
+            <h1><a href="index.php">Logo</a></h1>
             <div id="navbar">
                 <ul>
-                    <li><a href="#">HOME</a></li>
+                    <li><a href="index.php">HOME</a></li>
                     <li><a href="#">ABOUT</a></li>
                     <li><a href="#">CONTACT</a></li>
-                    <li><a href="#">BLOG</a></li>
+                    <li><a href="users.php">ALL USERS</a></li>
                 </ul>
             </div>
             <div class="buttons">
