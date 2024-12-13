@@ -101,6 +101,7 @@ table{
     background-color: darksalmon;
     text-align: center;
     border-collapse: collapse;
+    max-width: 100vw;
 }
 
 table th, table td{

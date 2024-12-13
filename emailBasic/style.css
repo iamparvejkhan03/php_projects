@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Happy Monkey", system-ui;
+    font-weight: 900;
+    font-style: normal;
+}
+
+::placeholder{
+    color: black;
+}
+
+#main{
+    background-color:bisque;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main form{
+    min-width: 30%;
+    background-color: rgb(249, 186, 108);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 25px rgb(252, 165, 60);
+}
+
+form input[type=text], form input[type=email], #main form textarea{
+    padding: 15px 10px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid rgb(120, 116, 116);
+    color: black;
+    font-size: 17px;
+}
+
+.result_heading{
+    color: mediumseagreen;
+    text-align: center;
+    padding: 15px;
+}
+
+form input[type=submit]{
+    padding: 15px 30px;
+    background-color: mediumseagreen;
+    color: white;
+    border: 0px solid black;
+    border-radius: 5px;
+    font-size: 17px;
+    cursor: pointer;
+}

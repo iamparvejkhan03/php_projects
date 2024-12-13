@@ -52,20 +52,10 @@
                 <th>USERNAME</th>
                 <th>FULL NAME</th>
                 <th>EMAIL</th>
-                <th>PASSWORD</th>
+                <!-- <th>PASSWORD</th> -->
                 <th>UPDATE</th>
                 <th>DELETE</th>
             </tr>
-            <!-- <tr>
-                <td>1</td>
-                <td>PARVEJKHAN01</td>
-                <td>PARVEJ KHAN</td>
-                <td>IAMPARVEJKHAN03@GMAIL.COM</td>
-                <td>0151952*****</td>
-                <td><button>✏️</button></td>
-                <td><button>❌</button></td>
-                
-            </tr> -->
             <?php
                 if($session){
                     $select = "SELECT * FROM users";
@@ -73,15 +63,12 @@
                     if($mysqli_select){
                         $id = '44';
                         while($row = mysqli_fetch_assoc($mysqli_select)){
-                            // $id = $row['id'];
-                            // echo $id;
-                            // print_r($row['full_name']);
                             echo "<tr>
                                     <td>{$row['id']}</td>
                                     <td>{$row['username']}</td>
                                     <td>{$row['full_name']}</td>
                                     <td>{$row['email']}</td>
-                                    <td>{$row['password']}</td>
+                                    <td hidden>{$row['password']}</td>
                                     <td>
                                         <form action='users.php' method='post'>
                                             <input type='hidden' name='id' value='{$row['id']}'>
@@ -110,7 +97,7 @@
                         }
                         if(isset($_POST['update_new_password'])){
                             $id = $_POST['id'];
-                            $password = $_POST['password'];
+                            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                             $update = "UPDATE users SET password = '$password' WHERE id = '$id'";
                             // var_dump($password, $id);
 
