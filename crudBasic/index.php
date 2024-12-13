@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <title>Wbeiste</title>
+    <title>Website</title>
 </head>
 <body>
     <div id="main">
