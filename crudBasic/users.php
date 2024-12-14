@@ -1,6 +1,13 @@
 <?php
     include("database.php");
     $session = session_start();
+    if(!isset($_SESSION['username'])){
+        ?>
+            <script>
+                location.href = "login.php";
+            </script>
+        <?php
+    }
     if(isset($_POST['logout'])){
         session_destroy();
         header("Location: index.php");
@@ -110,29 +117,39 @@
                         }
                         if(isset($_POST['delete'])){
                             $id = $_POST['id'];
-                            $delete = "DELETE FROM users WHERE id = '$id'";
-                            $mysqli_delete = mysqli_query($conn, $delete);
-
-                            if($mysqli_delete){
-                                echo "User deleted!";
-                            }else{
-                                echo "Could not delete user!";
+                            $select_user_based_on_id = "SELECT username FROM users WHERE id = '$id'";
+                            $mysqli_select_user_based_on_id_query = mysqli_query($conn, $select_user_based_on_id);
+                            $current_username = null;
+                            while($rows = mysqli_fetch_assoc($mysqli_select_user_based_on_id_query)){
+                                $current_username = $rows['username'];
                             }
+
+                            if($mysqli_select_user_based_on_id_query && $_SESSION['username'] == $current_username){
+                                echo "<p style='color:red'>Can't delete yourself!</p>";
+                            }else{
+                                $delete = "DELETE FROM users WHERE id = '$id'";
+                                $mysqli_delete = mysqli_query($conn, $delete);
+                                if($mysqli_delete){
+                                    echo "<p style='color:green'>User deleted!</p>";
+                                    ?>
+                                       <script>
+                                            location.href = location.href;
+                                            exit();
+                                        </script>
+                                   <?php
+                                }
+                            }
+
+                            
+                            // }else{
+                            //     echo "Could not delete user!";
+                            // }
                         }
                     }else{
                         echo "Query failed: ". mysqli_error($conn);
                     }
                 }
             ?>
-            <!-- <tr>
-                <td>2</td>
-                <td>SAHIDKHAN03</td>
-                <td>SAHID KHAN</td>
-                <td>SAHIDBHAI9491@GMAIL.COM</td>
-                <td>636730*****</td>
-                <td><button>✏️</button></td>
-                <td><button>❌</button></td>
-            </tr> -->
         </table>
     </div>
 </body>

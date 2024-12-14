@@ -40,20 +40,6 @@
                         }
                     }
                     
-                    // if(!$mysqli_select){
-                    //     echo "Could not fetch user!";
-                    // }else{
-                    //     foreach($mysqli_select as $arr){
-                    //         foreach($arr as $key=>$value){
-                    //             if($value == $password){
-                    //                 session_start();
-                    //                 $_SESSION['username'] = $username;
-                    //                 $_SESSION['password'] = $password;
-                    //                 header('Location: users.php');
-                    //             }
-                    //         }
-                    //     }
-                    // }
                 }
             ?>
             <form action="login.php" method="post">
