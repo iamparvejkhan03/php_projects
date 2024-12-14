@@ -139,11 +139,6 @@
                                    <?php
                                 }
                             }
-
-                            
-                            // }else{
-                            //     echo "Could not delete user!";
-                            // }
                         }
                     }else{
                         echo "Query failed: ". mysqli_error($conn);
