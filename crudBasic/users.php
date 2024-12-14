@@ -59,7 +59,8 @@
                 <th>USERNAME</th>
                 <th>FULL NAME</th>
                 <th>EMAIL</th>
-                <!-- <th>PASSWORD</th> -->
+                <th>TOKEN</th>
+                <th>STATUS</th>
                 <th>UPDATE</th>
                 <th>DELETE</th>
             </tr>
@@ -76,6 +77,8 @@
                                     <td>{$row['full_name']}</td>
                                     <td>{$row['email']}</td>
                                     <td hidden>{$row['password']}</td>
+                                    <td>{$row['token']}</td>
+                                    <td>{$row['account_status']}</td>
                                     <td>
                                         <form action='users.php' method='post'>
                                             <input type='hidden' name='id' value='{$row['id']}'>
@@ -125,12 +128,12 @@
                             }
 
                             if($mysqli_select_user_based_on_id_query && $_SESSION['username'] == $current_username){
-                                echo "<p style='color:red'>Can't delete yourself!</p>";
+                                echo "<p style='color:red; position:absolute;'>Can't delete yourself!</p>";
                             }else{
                                 $delete = "DELETE FROM users WHERE id = '$id'";
                                 $mysqli_delete = mysqli_query($conn, $delete);
                                 if($mysqli_delete){
-                                    echo "<p style='color:green'>User deleted!</p>";
+                                    echo "<p style='color:green; position:absolute;'>User deleted!</p>";
                                     ?>
                                        <script>
                                             location.href = location.href;

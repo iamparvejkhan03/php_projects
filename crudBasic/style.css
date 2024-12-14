@@ -43,7 +43,7 @@ button, input[type=submit]{
     text-decoration: none;
 }
 
-#register_form, #login_form{
+#register_form, #login_form, #password_reset_email_form, #password_reset_form{
     background-color: darksalmon;
     width: 25%;
     padding: 50px 25px;
@@ -51,7 +51,7 @@ button, input[type=submit]{
     box-shadow: 5px 5px 30px black;
 }
 
-#register_form h2, #login_form h2{
+#register_form h2, #login_form h2, #password_reset_email_form h2, #password_reset_form h2{
     text-align: center;
 }
 
@@ -96,7 +96,6 @@ caption{
 }
 
 table{
-    /* border: 1px solid black; */
     margin-top: 100px;
     background-color: darksalmon;
     text-align: center;
@@ -105,7 +104,6 @@ table{
 }
 
 table th, table td{
-    /* border: 1px solid black; */
     padding: 10px 20px;
 }
 
@@ -164,4 +162,12 @@ table button{
     border-radius: 10px;
     background-color: darksalmon;
     box-shadow: 5px 5px 30px black;
+}
+
+#eye_icon{
+    padding: 5px;
+    font-size: 20px;
+    background-color: transparent;
+    position: absolute;
+    right: 40%;
 }
