@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include_once("links.php") ?>
     <title>Reset Password</title>
 </head>
 <body>
@@ -29,6 +24,8 @@
                             if($mysqli_update_query){
                                 session_start();
                                 $_SESSION['login_notice'] = "Password has been reset";
+                                $username = $_SESSION['username'];
+                                setcookie('username', "{$username}", (time()+86400*30));
                                 setcookie('password', "{$new_password}", (time()+86400*30));
                                 header("location: login.php");
                             }else{

@@ -1,17 +1,13 @@
 <?php
     include("database.php");
+    include_once("google_client.php");
     session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include_once("links.php") ?>
     <title>Login</title>
 </head>
 <body>
@@ -28,7 +24,6 @@
 
                     $select = "SELECT * FROM users WHERE username = '$username'";
                     $mysqli_select = mysqli_query($conn, $select);
-
                     if(mysqli_num_rows($mysqli_select)==0){
                         echo "<p style='color:red'>User doesn't exist!</p>";
                     }else{
@@ -38,7 +33,9 @@
                                 if(password_verify($password, $rows['password']) || $password == $rows['password']){
                                     // $_SESSION['username'] = $username;
                                     $_SESSION['password'] = $password;
-                                    header('Location: users.php');
+                                    $_SESSION['full_name'] = $rows['full_name'];
+                                    $_SESSION['email'] = $rows['email'];
+                                    header('Location: profile.php');
                                 }else{
                                     echo "<p style='color: red'>Password is wrong!</p>";
                                 }
@@ -62,7 +59,8 @@
                     })
                 </script>
                 <input type="<?php echo $password_input_type; ?>" name="password" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" placeholder="PASSWORD"><br><br>
-                <input type="submit" name="login" value="LOGIN">
+                <input type="submit" name="login" value="LOGIN"><br><br>
+                <p><a href="<?php echo $google_client->createAuthUrl(); ?>" class="google_login_button"><img height="25px" width="25px" src="https://cdn-icons-png.flaticon.com/512/300/300221.png">&nbsp; CONTINUE WITH GOOGLE</a></p><br>
             </form><br>
             <p>FORGOT PASSWORD? <a href="password_reset_email.php">CLICK TO RESET</a></p><br>
             <p>NOT REGISTERED YET? <a href="register.php">SIGN UP NOW</a></p>

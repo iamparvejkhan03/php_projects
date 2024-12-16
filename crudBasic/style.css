@@ -29,13 +29,41 @@
     padding: 10px;
 }
 
-button, input[type=submit]{
+button, input[type=submit], #register_form a.google_login_button, #login_form a.google_login_button{
     padding: 15px 15px;
     background-color: black;
     border: 0px solid black;
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    text-decoration: none;
+}
+
+#register_form a.google_login_button, #login_form a.google_login_button{
+    font-size: 13px;
+    padding: 15px 67px;
+    background-color: white;
+    color: black;
+}
+
+button[name=delete_profile]{
+    width: 100%;
+    background-color: red;
+}
+
+button[name=update]{
+    width: 100%;
+}
+
+input[type=file]{
+    position: relative;
+    left: 50%;
+    transform: translate(-25%);
+    cursor: pointer;
+}
+
+img{
+    vertical-align: middle;
 }
 
 .buttons button a{
@@ -43,7 +71,7 @@ button, input[type=submit]{
     text-decoration: none;
 }
 
-#register_form, #login_form, #password_reset_email_form, #password_reset_form{
+#register_form, #login_form, #password_reset_email_form, #password_reset_form, #user_profile_box{
     background-color: darksalmon;
     width: 25%;
     padding: 50px 25px;
@@ -51,7 +79,11 @@ button, input[type=submit]{
     box-shadow: 5px 5px 30px black;
 }
 
-#register_form h2, #login_form h2, #password_reset_email_form h2, #password_reset_form h2{
+#user_profile_box{
+    width: 33%;
+}
+
+#register_form h2, #login_form h2, #password_reset_email_form h2, #password_reset_form h2, #user_profile_box h2{
     text-align: center;
 }
 
@@ -78,13 +110,27 @@ input[type=email], input[type=password], input[type=text]{
     background-color: blanchedalmond;
 }
 
-#all_users_container{
+#all_users_container, #user_profile_container{
     display: flex;
     min-height: 100vh;
     justify-content: center;
     align-items: flex-start;
     background-color: blanchedalmond;
     position: relative;
+}
+
+#user_profile_container{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: blanchedalmond;
+    position: relative;
+    padding: 50px;
+}
+
+button.delete_profile{
+    width: 100%;
 }
 
 p{
@@ -149,6 +195,13 @@ table button{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.username_in_header img{
+    border-radius: 50%;
+}
+.username_in_header a{
+    text-decoration: underline;
 }
 
 #update_password_form{

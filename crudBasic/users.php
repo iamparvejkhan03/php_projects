@@ -1,6 +1,7 @@
 <?php
     include("database.php");
     $session = session_start();
+
     if(!isset($_SESSION['username'])){
         ?>
             <script>
@@ -8,58 +9,27 @@
             </script>
         <?php
     }
-    if(isset($_POST['logout'])){
-        session_destroy();
-        header("Location: index.php");
-    }
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include_once("links.php") ?>
     <title>All Users</title>
 </head>
 <body>
-    <div id="header">
-        <h1><a href="index.php">Logo</a></h1>
-        <div id="navbar">
-            <ul>
-                <li><a href="index.php">HOME</a></li>
-                <li><a href="#">ABOUT</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <li><a href="users.php">ALL USERS</a></li>
-            </ul>
-        </div>
-        <div class="username_in_header">
-            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" height="50px" width="50px" alt="user_img">
-            <a href="#"><?php 
-                try{
-                    echo $_SESSION['username'];
-                }catch(error){
-                    echo "Error occured!";
-                }
-            ?></a>
-            <form action="users.php" method="post">
-                <input type="submit" name="logout" value="LOG OUT">
-            </form>
-        </div>
-    </div>
+    <?php include_once("header.php");?>
     
     <div id="all_users_container">
         <table>
             <caption>ALL USERS</caption>
             <tr>
+                <th>PHOTO</th>
                 <th>USER ID</th>
                 <th>USERNAME</th>
                 <th>FULL NAME</th>
                 <th>EMAIL</th>
-                <th>TOKEN</th>
                 <th>STATUS</th>
                 <th>UPDATE</th>
                 <th>DELETE</th>
@@ -71,13 +41,15 @@
                     if($mysqli_select){
                         $id = '44';
                         while($row = mysqli_fetch_assoc($mysqli_select)){
+                            // $half_email = explode("@", $row['email'])[0];
+                            // print_r($half_email);
                             echo "<tr>
+                                    <td><img style='border-radius: 50%' width='50px' src={$row['pic']}></td>
                                     <td>{$row['id']}</td>
                                     <td>{$row['username']}</td>
                                     <td>{$row['full_name']}</td>
                                     <td>{$row['email']}</td>
                                     <td hidden>{$row['password']}</td>
-                                    <td>{$row['token']}</td>
                                     <td>{$row['account_status']}</td>
                                     <td>
                                         <form action='users.php' method='post'>

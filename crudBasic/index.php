@@ -5,12 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include("links.php") ?>
     <title>Website</title>
 </head>
 <body>
@@ -33,7 +28,9 @@
         <div id="hero">
             <div class="hero_content">
                 <h1>WELCOME TO MY WEBSITE!</h1><br>
-                <h3>THIS IS A WEBSITE DESIGNED BY PARVEJ KHAN. I WELCOME YOU ALL TO USE IT.</h3>
+                <h3>THIS IS A WEBSITE DESIGNED BY PARVEJ KHAN. I WELCOME YOU ALL TO USE IT.</h3><br>
+                <p><a href="download.php?file=upload/cn">DOWNLOAD OUR PDF</a></p><br>
+                <p><a href="download.php">DOWNLOAD OUR IMAGE</a></p>
             </div>
         </div>
     </div>

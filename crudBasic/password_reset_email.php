@@ -6,12 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include_once("links.php") ?>
     <title>Email</title>
 </head>
 <body>
@@ -34,11 +29,13 @@
         $mysqli_select_query = mysqli_query($conn, $select);
         if(mysqli_num_rows($mysqli_select_query)>0){
             $email = null;
+            $username = null;
             $full_name = null;
             $token = null;
             $verification_url = null;
             while($rows = mysqli_fetch_assoc($mysqli_select_query)){
                 $email = $rows['email'];
+                $username = $rows['username'];
                 $full_name = $rows['full_name'];
                 $token = $rows['token'];
                 $verification_url = "http://localhost/projects/php_projects/crudBasic/reset_password.php?token={$token}";
@@ -46,6 +43,7 @@
             send_email($email, $full_name, $verification_url);
             session_start();
             $_SESSION['login_notice'] = "Please check your inbox";
+            $_SESSION['username'] = $username;
         }else{
             echo "Invalid Email!";
         }

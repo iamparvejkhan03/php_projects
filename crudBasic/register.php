@@ -1,16 +1,12 @@
 <?php
     include("database.php");
+    include("google_client.php");
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Happy+Monkey&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <?php include_once("links.php") ?>
     <title>Register</title>
 </head>
 <body>
@@ -51,10 +47,10 @@
 
                             include("send_email.php");
                             send_email($email, $full_name, $activation_url);
-                            
                         }
                     }
                 }
+
             ?>
             <form action="register.php" method="post">
                 <input type="text" placeholder="FULL NAME" name="full_name"><br><br>
@@ -62,7 +58,8 @@
                 <input type="email" name="email" placeholder="EMAIL ADDRESS"><br><br>
                 <input type="password" name="password" placeholder="PASSWORD"><br><br>
                 <input type="submit" name="register" value="REGISTER"><br><br>
-                <p>ALREADY A USER? <a href="login.php">LOGIN NOW</a></p>
+                <p><a href="<?php echo $google_client->createAuthUrl(); ?>" class="google_login_button"><img height="25px" width="25px" src="https://cdn-icons-png.flaticon.com/512/300/300221.png">&nbsp; CONTINUE WITH GOOGLE</a></p><br>
+                <p>ALREADY A USER? <a href="login.php">LOGIN NOW</a></p><br>
             </form>
         </div>
     </div>
