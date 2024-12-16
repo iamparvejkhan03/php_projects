@@ -5,8 +5,9 @@
     <title>Reset Password</title>
 </head>
 <body>
-<div class="form_container">
-        <div id="password_reset_form">
+<?php include("logout_header.php") ?>
+<div class="main">
+        <div class="form">
             <?php
                 include("database.php");
 

@@ -7,12 +7,17 @@
     font-style: normal;
 }
 
-#header{
+.header{
     display: flex;
     justify-content: space-around;
-    background-color:darksalmon;
+    background-color:black;
     align-items: center;
     padding: 15px;
+    color: white;
+}
+
+.header h1 a{
+    color: white;
 }
 
 #navbar ul{
@@ -27,39 +32,63 @@
     text-decoration: none;
     color: black;
     padding: 10px;
+    color: white;
 }
 
-button, input[type=submit], #register_form a.google_login_button, #login_form a.google_login_button{
+button, input[type=submit], .form button.full_width_button, .mode_btn{
     padding: 15px 15px;
-    background-color: black;
+    background-color: white;
     border: 0px solid black;
     border-radius: 5px;
-    color: white;
+    color: black;
     cursor: pointer;
     text-decoration: none;
 }
 
-#register_form a.google_login_button, #login_form a.google_login_button{
+.form a.google_login_button, .full_width_button{
     font-size: 13px;
-    padding: 15px 67px;
-    background-color: white;
+    /* padding: 15px 64px; */
+    width: 100%;
+    background-color: whitesmoke;
     color: black;
 }
 
 button[name=delete_profile]{
     width: 100%;
     background-color: red;
+    color: white;
 }
 
 button[name=update]{
     width: 100%;
+    background-color: green;
+    color: white;
 }
 
+/* button[name="mode"]{
+    background-color: transparent;
+} */
+
+button[name="mode"]{
+    background-color: transparent;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+i{
+    /* vertical-align: middle; */
+}
 input[type=file]{
+    color: white;
+}
+input[name=pic]{
     position: relative;
     left: 50%;
-    transform: translate(-25%);
+    transform: translate(-33%);
     cursor: pointer;
+    color: white;
+    display: inline;
 }
 
 img{
@@ -67,66 +96,53 @@ img{
 }
 
 .buttons button a{
-    color: white;
+    color: black;
     text-decoration: none;
 }
 
-#register_form, #login_form, #password_reset_email_form, #password_reset_form, #user_profile_box{
-    background-color: darksalmon;
+.form{
+    position: absolute;
+    background-color: black;
     width: 25%;
     padding: 50px 25px;
     border-radius: 10px;
     box-shadow: 5px 5px 30px black;
 }
 
-#user_profile_box{
-    width: 33%;
+.right_panel{
+    position: relative;
 }
 
-#register_form h2, #login_form h2, #password_reset_email_form h2, #password_reset_form h2, #user_profile_box h2{
+.form h2{
     text-align: center;
+    color: white;
 }
 
-input{
+input, textarea{
     padding: 10px;
     width: 100%;
 }
 
-input[type=email], input[type=password], input[type=text]{
+input[type=email], input[type=password], input[type=text], textarea{
     background-color: transparent;
+    color: white;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 
 ::placeholder{
-    color: black;
+    color: white;
 }
 
-.form_container{
+.main{
     display: flex;
+    /* padding: 50px 0; */
     min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: blanchedalmond;
-}
-
-#all_users_container, #user_profile_container{
-    display: flex;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: blanchedalmond;
+    margin: auto;
+    justify-content: space-around;
+    align-items:center;
+    background-color: whitesmoke;
     position: relative;
-}
-
-#user_profile_container{
-    display: flex;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    background-color: blanchedalmond;
-    position: relative;
-    padding: 50px;
 }
 
 button.delete_profile{
@@ -135,6 +151,12 @@ button.delete_profile{
 
 p{
     text-align: center;
+    color: white;
+    font-size: 14px;
+}
+
+p a{
+    color: white;
 }
 
 caption{
@@ -142,30 +164,32 @@ caption{
 }
 
 table{
-    margin-top: 100px;
-    background-color: darksalmon;
+    /* margin-top: 100px; */
+    background-color: black;
     text-align: center;
     border-collapse: collapse;
     max-width: 100vw;
+    color: white;
 }
 
 table th, table td{
     padding: 10px 20px;
 }
 
-table tr:nth-child(even){
-    background-color: blanchedalmond;
-}
-
-table button{
+table tr td input{
     padding: 0px;
-    background-color: transparent;
+    background-color: black;
 }
 
-#hero{
-    min-height: 90vh;
-    background-color: blanchedalmond;
-    position: relative;
+table tr:nth-child(even), table tr td input:nth-child(even){
+    background-color: whitesmoke;
+    color: black;
+}
+
+.box{
+    background-color: whitesmoke;
+    /* position: relative; */
+    background-color: black;
 }
 
 .hero_content{
@@ -174,18 +198,30 @@ table button{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    background-color: darksalmon;
+    background-color: black;
     padding: 50px;
     border-radius: 25px;
     max-width: 40%;
+    color: white;
 }
 
-.hero_content h1{
+.hero_content a{
+    color: white;
+}
+
+.form h1{
     font-size: 64px;
+    color: white;
+    text-align: center;
+}
+
+.form h3{
+    color: white;
+    text-align: center;
 }
 
 .username_in_header a{
-    color: black;
+    color: white;
     text-decoration: none;
     vertical-align: middle;
     margin: 0 10px;
@@ -213,14 +249,42 @@ table button{
     padding: 25px;
     margin-top: 25px;
     border-radius: 10px;
-    background-color: darksalmon;
+    background-color: black;
     box-shadow: 5px 5px 30px black;
 }
 
-#eye_icon{
+.eye_icon{
     padding: 5px;
     font-size: 20px;
     background-color: transparent;
     position: absolute;
-    right: 40%;
+    right: 10%;
+    color: white;
+}
+
+.dark_background{
+    background-color: black !important;
+    color: white !important;
+}
+
+.light_background{
+    background-color: white !important;
+    color: black !important;
+    border-bottom-color: black !important;
+}
+
+.light_background::placeholder{
+    color: black;
+}
+
+.light_color{
+    color: white !important;
+}
+
+.dark_color{
+    color: black !important;
+}
+
+.light_box_shadow{
+    box-shadow: 1px 1px 30px white;
 }

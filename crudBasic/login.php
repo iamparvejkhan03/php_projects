@@ -11,16 +11,16 @@
     <title>Login</title>
 </head>
 <body>
-    <div class="form_container">
-        <div id="login_form">
-            
+    <?php include("logout_header.php") ?>
+    <div class="main">
+        <div class="form">
             <p><?php if(isset($_SESSION['login_notice'])){echo $_SESSION['login_notice'];} ?></p><br>
             <h2>LOGIN NOW!</h2><br>
             <?php
                 $password_input_type = "password";
                 if(isset($_POST['login'])){
                     $username = $_POST['username'];
-                    $password = $_POST['password'];
+                    $password = ($_POST['password']);
 
                     $select = "SELECT * FROM users WHERE username = '$username'";
                     $mysqli_select = mysqli_query($conn, $select);
@@ -48,8 +48,8 @@
                 }
             ?>
             <form action="login.php" method="post">
-                <input type="text" name="username" value="<?php if(isset($_COOKIE['username'])){echo $_COOKIE['username'];} ?>" placeholder="USERNAME"><br><br>
-                <button id="eye_icon">👀</button>
+                <input type="text" name="username" value="<?php if(isset($_COOKIE['username'])){echo $_COOKIE['username'];} ?>" placeholder="USERNAME" required><br><br>
+                <button class="eye_icon"><i class="far fa-eye"></i></button>
                 <script>
                     let eye_icon = document.getElementById("eye_icon");
                     eye_icon.addEventListener("click", function(e){
@@ -58,9 +58,10 @@
                         console.log($password_input_type);
                     })
                 </script>
-                <input type="<?php echo $password_input_type; ?>" name="password" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" placeholder="PASSWORD"><br><br>
-                <input type="submit" name="login" value="LOGIN"><br><br>
-                <p><a href="<?php echo $google_client->createAuthUrl(); ?>" class="google_login_button"><img height="25px" width="25px" src="https://cdn-icons-png.flaticon.com/512/300/300221.png">&nbsp; CONTINUE WITH GOOGLE</a></p><br>
+                <input type="<?php echo $password_input_type; ?>" name="password" value="<?php if(isset($_COOKIE['password'])){echo $_COOKIE['password'];} ?>" placeholder="PASSWORD" required><br><br>
+                <button class="full_width_button" name="login">LOGIN</button><br><br>
+                <!-- <input type="submit" name="login" value="LOGIN"><br><br> -->
+                <button class="full_width_button" onclick='event.preventDefault(); location.href="<?php echo $google_client->createAuthUrl(); ?>"'><img height="15px" width="15px" src="https://cdn-icons-png.flaticon.com/512/300/300221.png">&nbsp; CONTINUE WITH GOOGLE</button><br>
             </form><br>
             <p>FORGOT PASSWORD? <a href="password_reset_email.php">CLICK TO RESET</a></p><br>
             <p>NOT REGISTERED YET? <a href="register.php">SIGN UP NOW</a></p>

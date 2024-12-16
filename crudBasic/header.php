@@ -2,13 +2,13 @@
     include_once("links.php");
 ?>
 
-<div id="header">
-    <h1><a href="index.php">Logo</a></h1>
+<div class="header">
+    <a href="index.php"><img height="50px" src="upload/logo.png" alt="logo"></a>
     <div id="navbar">
         <ul>
             <li><a href="index.php">HOME</a></li>
             <li><a href="#">ABOUT</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li><a href="contact.php">CONTACT</a></li>
             <li><a href="users.php">ALL USERS</a></li>
         </ul>
     </div>
@@ -25,7 +25,8 @@
         <form action="users.php" method="post">
             <!-- <input type="submit" name="logout" value="LOG OUT"> -->
             <button name="logout">LOG OUT <i class="fa fa-sign-out"></i></button>
-        </form>
+        </form>&nbsp;
+        <button class="mode_btn" name="mode"><i class="fas fa-sun" aria-hidden="true"></i></button>
     </div>
 </div>
 

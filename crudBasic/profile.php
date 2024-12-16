@@ -15,8 +15,8 @@
 </head>
 <body>
     <?php include_once("header.php");?>
-    <div id="user_profile_container">
-        <div id="user_profile_box">
+    <div class="main">
+        <div class="form">
             <h2>USER PROFILE</h2><br>
             <?php
                 $full_name = null;

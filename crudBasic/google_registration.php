@@ -85,8 +85,11 @@
         $insert = "INSERT INTO users (full_name, username, email, password, token, account_status, pic) VALUES ('$full_name', '$username', '$email', '$hash_password', '$token', 'active', '$pic')";
         $mysqli_insert_query = mysqli_query($conn, $insert);
         if($mysqli_insert_query){
-            send_email($email, $full_name, $activation_url);
-            header("Location: profile.php");
+            $subject = "Registration Successful!";
+            $body = "Hi {$full_name},Your account has been created by using your Google account {$email}.";
+            $success_message = "Your account has been created successfully!";$header = "Location: profile.php";
+            send_email($email, $full_name, $subject, $body, $success_message, $header);
+            
         }else{
             echo "There was some error!";
         }

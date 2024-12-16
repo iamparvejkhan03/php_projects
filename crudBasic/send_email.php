@@ -1,10 +1,10 @@
 <?php
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
-    
+    session_start();
     // Include the Composer autoloader
     require 'vendor/autoload.php';
-    function send_email($email, $full_name, $activation_url){
+    function send_email($email, $full_name, $subject, $body, $success_message, $header){
         //Email code again starts here
         try {
             //PHPMailer code starts here
@@ -26,15 +26,15 @@
             $mail->addAddress("$email", "$full_name"); // Add recipient
 
             $mail->isHTML(true); // Set email format to HTML
-            $mail->Subject = "Registration Successful!";
-            $mail->Body = "<h1>Hello, {$full_name}!</h1><p>Your account has been created on the website. Please activate your account by clicking on this link: <br> {$activation_url}</p>";
+            $mail->Subject = "{$subject}";
+            $mail->Body = "{$body}";
 
             // Send email
             $mail->send();
-            echo "<p style='color: green; text-align: center'>Please check your inbox!</p><br>";
-
             //Email send code again ends here
-            header("Location: login.php");
+            $_SESSION['login_notice'] = $success_message;
+            header($header);
+            // echo "{$success_message}<br>";
         } catch (Exception $e) {
             echo "Email could not be sent. Error: {$mail->ErrorInfo}";
         }

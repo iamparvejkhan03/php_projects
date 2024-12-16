@@ -10,12 +10,14 @@
     <title>Email</title>
 </head>
 <body>
-    <div class="form_container">
-        <div id="password_reset_email_form">
+    <?php include("logout_header.php") ?>
+    <div class="main">
+        <div class="form">
             <h2>ENTER USER E-MAIL</h2><br>
             <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']) ?>" method="post">
-                <input type="email" name="email" placeholder="ENTER E-MAIL" id="email"><br><br>
-                <input type="submit" name="send" value="SEND EMAIL ➡">
+                <input type="email" name="email" placeholder="ENTER E-MAIL" id="email" required><br><br>
+                <!-- <input type="submit" name="send" value="SEND EMAIL ➡"> -->
+                 <button class="full_width_button" name="send">SEND EMAIL ➡</button>
             </form>
         </div>
     </div>
@@ -40,9 +42,13 @@
                 $token = $rows['token'];
                 $verification_url = "http://localhost/projects/php_projects/crudBasic/reset_password.php?token={$token}";
             }
-            send_email($email, $full_name, $verification_url);
+            $subject = "Password reset request";
+            $body = "hi {$full_name}, you've requested to reset your password. Please click on the below link to reset password:<br>{$verification_url}";
+            $success_message = "Please check your inbox and click on the link to reset password.";
+            $header = "Location: login.php";
+            send_email($email, $full_name, $subject, $body, $success_message, $header);
             session_start();
-            $_SESSION['login_notice'] = "Please check your inbox";
+            // $_SESSION['login_notice'] = "Please check your inbox";
             $_SESSION['username'] = $username;
         }else{
             echo "Invalid Email!";

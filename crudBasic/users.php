@@ -21,7 +21,7 @@
 <body>
     <?php include_once("header.php");?>
     
-    <div id="all_users_container">
+    <div class="main">
         <table>
             <caption>ALL USERS</caption>
             <tr>
@@ -72,22 +72,25 @@
                                         <form action='users.php' method='post'>
                                             <label for='password'>NEW PASSWORD:</label><br>
                                             <input type='hidden' name='id' value='$id'>
-                                            <input type='password' id='password' name='password'><br>
+                                            <input type='password' id='password' name='password' placeholder='NEW PASSWORD'><br>
                                             <input type='submit' name='update_new_password' value='UPDATE PASSWORD'>
                                         </form>
                                 </div>";
                         }
                         if(isset($_POST['update_new_password'])){
                             $id = $_POST['id'];
+                            $pass = $_POST['password'];
                             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                             $update = "UPDATE users SET password = '$password' WHERE id = '$id'";
                             // var_dump($password, $id);
 
                             $mysqli_update = mysqli_query($conn, $update);
                             if($mysqli_update){
-                                echo "Password Updated!";
+                                echo "<p style='color:green; position:absolute; top:0'>Password Updated!</p>";
+                                $_SESSION['password'] = $pass;
+                                echo "<script>setTimeout(function(){return location.href = location.href}, 2000)</script>";
                             }else{
-                                echo "Could not update the password!";
+                                echo "<p style='color:red;'>Could not update the password!</p>";
                             }
                         }
                         if(isset($_POST['delete'])){
