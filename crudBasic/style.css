@@ -7,6 +7,11 @@
     font-style: normal;
 }
 
+label::after{
+    content: "*";
+    color: red;
+}
+
 .header{
     display: flex;
     justify-content: space-around;
@@ -113,17 +118,21 @@ img{
     position: relative;
 }
 
+.left_panel{
+    position: relative;
+}
+
 .form h2{
     text-align: center;
     color: white;
 }
 
-input, textarea{
+input, textarea, select{
     padding: 10px;
     width: 100%;
 }
 
-input[type=email], input[type=password], input[type=text], textarea{
+input[type=email], input[type="search"], input[type=password], input[type=text], textarea, select{
     background-color: transparent;
     color: white;
     border: none;
@@ -143,6 +152,22 @@ input[type=email], input[type=password], input[type=text], textarea{
     align-items:center;
     background-color: whitesmoke;
     position: relative;
+    flex-wrap: wrap;
+}
+
+.main_alike_with_styling{
+    max-width: 80%;
+    margin: auto;
+    padding: 100px 0;
+    /* display: flex;
+    flex-direction: row; */
+    /* padding: 50px 0; */
+    /* min-height: 100vh;
+    margin: auto;
+    justify-content: space-around;
+    align-items:center;
+    background-color: whitesmoke;*/
+    position: relative; 
 }
 
 button.delete_profile{
@@ -261,6 +286,226 @@ table tr:nth-child(even), table tr td input:nth-child(even){
     right: 10%;
     color: white;
 }
+
+.phone{
+    text-align: center;
+}
+
+.phone a{
+    color: white;
+    text-decoration: none;
+}
+
+.sub_form{
+    background-color: gray;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/*CREATE BLOG POST*/
+
+.full_width_form form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.full_width_form form input::placeholder, .full_width_form form textarea::placeholder{
+    color: gray;
+}
+
+.full_width_form form input, .full_width_form form select{
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    padding: 15px;
+}
+
+.full_width_form form input[typ=file]{
+    padding: 10px;
+    color: gray;
+}
+
+.full_width_form .left_panel, .full_width_form .right_panel{
+    border: 1px solid gray;
+    padding: 50px;
+    background-color: aliceblue;
+}
+
+.full_width_form .left_panel{
+    width: 65%;
+}
+
+.full_width_form .right_panel{
+    width: 30%;
+}
+
+.full_width_form h1{
+    text-align: center;
+}
+
+.full_width_form form button[name=create], .full_width_form form button[name=cancel], button[name=post_a_blog]{
+    background-color: black;
+    color: white;
+}
+
+/*BLOG POST*/
+
+.main_alike_with_styling .card{
+    width: 30%;
+    background-color: aliceblue;
+    border: 1px solid gray;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 475px;
+    margin-bottom: 50px;
+}
+
+.main_alike_with_styling .card .card_info{
+    padding: 0 15px;
+}
+
+.main_alike_with_styling .card .card_info p{
+    color: black;
+    text-align: left;
+    font-weight: normal;
+}
+
+.main_alike_with_styling .card .card_info .card_author_info{
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+}
+
+.main_alike_with_styling .card .card_info .card_author_info img{
+    border-radius: 50%;
+    vertical-align: middle;
+    width: 35px;
+    height: 35px;
+}
+
+.main_alike_with_styling .card .card_info .card_author_info .card_author_name_date {
+    padding: 0 10px;
+}
+
+button[name=post_a_blog]{
+    position: absolute;
+    float: right;
+    top: 0;
+    right: 0;
+    transform: translateY(100%);
+}
+
+/*VIEW POST*/
+
+.left_panel .card_author_info, .right_panel .card_author_info{
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.full_width_form .left_panel div.blog_text p, .full_width_form .left_panel .card_author_info p{
+    color: black;
+    font-weight: normal;
+    font-size: 17px;
+    text-align: left;
+}
+
+.full_width_form .left_panel .card_author_info img{
+    vertical-align: middle;
+}
+
+.full_width_section .blog_content{
+    background-color: white;
+    border: none;
+    width: 70%;
+    padding: 50px 0;
+}
+
+.full_width_section .right_panel{
+    background-color: white;
+    border: none;
+    text-align: center;
+    /* width: 25%; 
+    padding: 50px 10px;
+    display: none;
+    flex-direction: row; */
+    order: 2;
+}
+
+/* .full_width_section .right_panel .card{
+    width: 100%;
+} */
+
+.full_width_form .blog_content h1{
+    text-align: left;
+}
+
+.full_width_form .left_panel .card_author_info{
+    width: 50%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main_alike_with_styling .full_width_section{
+    display: flex;
+    flex-direction: row;
+}
+
+/* .full_width_section .right_panel .card_author_name_date{
+    display: flex;
+    flex-direction: column;
+} */
+
+.card_author_title_name_date{
+    padding: 5px;
+}
+
+.cards_in_row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.main_alike_with_styling .full_width_form{
+    /* display: flex;
+    justify-content: space-between; */
+}
+
+.full_width_section .right_panel{
+    width: 27%;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.full_width_section .right_panel .search_box{
+    width: 100%;
+}
+
+.search_box input{
+    padding: 15px;
+    color: white;
+}
+
+.search_box input::placeholder{
+    color: gray;
+}
+
+/*COMMENT FORM*/
+
+.comment_form{
+    width: 70%;
+}
+
+.comment_form input{
+    width: 49%;
+}
+
+.comment_form .tox-tinymce{
+    height: 200px !important;
+}
+
+/*DARK & LIGHT MODE*/
 
 .dark_background{
     background-color: black !important;
