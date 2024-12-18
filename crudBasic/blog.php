@@ -17,7 +17,8 @@
         } 
     ?>
     <div class="main_alike_with_styling">
-        <button name="post_a_blog" onclick="location.href = 'post_blog.php'">POST A BLOG</button>
+        <button class="post_a_blog" name="post_a_blog" onclick="location.href = 'post_blog.php'">POST A BLOG</button>
+        <h2>ALL BLOG POSTS</h2>
         <div class="main">
         <?php 
             $domain_name = $_SERVER['REQUEST_URI'];
@@ -59,5 +60,6 @@
         ?>
         </div>
     </div>
+    <?php include_once("footer.php") ?>
 </body>
 </html>

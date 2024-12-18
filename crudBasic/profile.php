@@ -1,10 +1,18 @@
 <?php
     include("database.php");
+    include("date_difference.php");
+    date_default_timezone_set("Asia/Kolkata");
     session_start();
     if(!isset($_SESSION['username'])){
         header("Location: login.php");
     }
     $pic_destination = null;
+    // $last_active = date_create();
+    $last_seen = null;
+    if(isset($_SESSION['last_seen'])){
+        $last_seen_session = $_SESSION['last_seen'];
+        $last_seen = date_difference($last_seen_session);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +24,8 @@
 <body>
     <?php include_once("header.php");?>
     <div class="main">
-        <div class="form">
-            <h2>USER PROFILE</h2><br>
+        <div class="form user_profile_box">
+            <h3>USER PROFILE</h3><br>
             <?php
                 $full_name = null;
                 $username = null;
@@ -80,6 +88,7 @@
                 }
             ?>
             <img width="100px" style="position:relative; border-radius: 50%; left: 50%; transform: translate(-50%);" src=<?php if(!empty($pic_destination)){echo $pic_destination;}else{echo "https://cdn-icons-png.flaticon.com/512/149/149071.png";} ?> alt="user_image"><br><br>
+            <p style="color: lightgreen;">LAST SEEN: <?php echo strtoupper($last_seen) ?></p><br>
             <form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post" enctype="multipart/form-data">
                 <!-- <button name="add_pic">ADD PIC <i class="fas fa-camera"></i></button><br><br> -->
                 <input type="file" value="<?php echo $pic_destination ?>" name="pic" id="pic"><br><br>
@@ -93,6 +102,7 @@
             </form>
         </div>
     </div>
+    <?php include_once("footer.php") ?>
 </body>
 </html>
 

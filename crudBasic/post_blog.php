@@ -78,5 +78,6 @@
             slug.value = slug_value.toLowerCase();
         })
     </script>
+    <?php include_once("footer.php") ?>
 </body>
 </html>

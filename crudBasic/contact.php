@@ -64,7 +64,7 @@
                     }
                 }
             ?>
-            <h2>CONTACT US</h2><br>
+            <h3>CONTACT US</h3><br>
             <form action="<?php echo htmlentities($_SERVER['REQUEST_URI']) ?>" method="post" enctype="multipart/form-data">
                 <input type="text" name="user_full_name" placeholder="FULL NAME" required><br><br>
                 <input type="email" name="user_email" placeholder="E-MAIL ADDRESS" required><br><br>
@@ -76,5 +76,6 @@
             </form>
         </div>
     </div>
+    <?php include_once("footer.php") ?>
 </body>
 </html>

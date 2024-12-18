@@ -18,7 +18,7 @@ mergetags_list: [
 ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
 });
 // Sync content before submission
-// document.querySelector('form').addEventListener('submit', function() {
-//     tinymce.triggerSave();
-// });
+document.querySelector('form').addEventListener('submit', function() {
+    tinymce.triggerSave();
+});
 </script>

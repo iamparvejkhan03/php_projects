@@ -67,5 +67,6 @@
             <p>NOT REGISTERED YET? <a href="register.php">SIGN UP NOW</a></p>
         </div>
     </div>
+    <?php include_once("footer.php") ?>
 </body>
 </html>
