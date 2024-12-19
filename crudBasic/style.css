@@ -789,7 +789,7 @@ footer .social_icons a{
     order: 3;
 }
 
-.chat_box_footer form{
+.chat_box_footer .like_form{
     display: flex;
     flex-direction: row;
     min-width: 100%;
@@ -900,8 +900,6 @@ p.small_text{
     background-color: rgb(156, 107, 202);
     border-radius: 2px;
 }
-
-.chat_box_body::-webkit-scrollbar-thumb
 
 /*DARK & LIGHT MODE*/
 
