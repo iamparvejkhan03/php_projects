@@ -1,5 +1,6 @@
 <?php
     include_once("links.php");
+    include_once("database.php");
 ?>
 
 <div class="header">
@@ -17,6 +18,7 @@
         <img src=<?php if(!empty($_SESSION['pic'])){echo $_SESSION['pic'];}else{ echo "https://cdn-icons-png.flaticon.com/512/149/149071.png";}?> height="50px" width="50px" alt="user_img">
         <a href="profile.php"><?php 
             try{
+                $username = $_SESSION['username'];
                 echo $_SESSION['username'];
             }catch(error){
                 echo "Error occured!";
@@ -31,7 +33,12 @@
 </div>
 
 <?php
+    $update = "UPDATE users SET online_status = 'offline' WHERE username = '$username'";
+    if(!isset($username)){
+        $mysqli_update_query = mysqli_query($conn, $update);
+    }
     if(isset($_POST['logout'])){
+        $mysqli_update_query = mysqli_query($conn, $update);
         session_destroy();
         header("Location: index.php");
     }

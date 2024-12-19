@@ -18,6 +18,7 @@
             <h2>LOGIN NOW!</h2><br>
             <?php
                 $password_input_type = "password";
+                $id = null;
                 if(isset($_POST['login'])){
                     $username = $_POST['username'];
                     $password = ($_POST['password']);
@@ -29,12 +30,16 @@
                     }else{
                         $_SESSION['username'] = $username;
                         while($rows = mysqli_fetch_assoc($mysqli_select)){
+                            $id =$rows['id'];
+                            $_SESSION['my_id'] = $id;
                             if($rows['account_status'] == "active"){
                                 if(password_verify($password, $rows['password']) || $password == $rows['password']){
                                     // $_SESSION['username'] = $username;
                                     $_SESSION['password'] = $password;
                                     $_SESSION['full_name'] = $rows['full_name'];
                                     $_SESSION['email'] = $rows['email'];
+                                    $update = "UPDATE users SET online_status = 'online' WHERE id = '$id'";
+                                    $mysqli_update_query = mysqli_query($conn, $update);
                                     header('Location: profile.php');
                                 }else{
                                     echo "<p style='color: red'>Password is wrong!</p>";

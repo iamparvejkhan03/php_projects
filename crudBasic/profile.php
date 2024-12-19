@@ -34,12 +34,14 @@
                 $hash_password = null;
                 $old_username = $_SESSION['username'];
                 $id = null;
+                $online_status = null;
                 $tmp_name = null;
                 // var_dump($old_username);
                 $select = "SELECT * FROM users WHERE username = '$old_username'";
                 $mysqli_select_query = mysqli_query($conn, $select);
                 while($rows = mysqli_fetch_assoc($mysqli_select_query)){
                     $id = $rows['id'];
+                    $online_status = $rows['online_status'];
                     $pic_destination = $rows['pic'];
                     // print_r($rows);
                     // echo $id;
@@ -88,7 +90,13 @@
                 }
             ?>
             <img width="100px" style="position:relative; border-radius: 50%; left: 50%; transform: translate(-50%);" src=<?php if(!empty($pic_destination)){echo $pic_destination;}else{echo "https://cdn-icons-png.flaticon.com/512/149/149071.png";} ?> alt="user_image"><br><br>
-            <p style="color: lightgreen;">LAST SEEN: <?php echo strtoupper($last_seen) ?></p><br>
+            <p style="color: lightgreen;">LAST SEEN: <?php echo strtoupper($last_seen) ?>
+                <?php
+                if($online_status == "online"){
+                    echo "<i class='online_status_icon fa-solid fa-circle'></i>";
+                }
+                ?>
+            </p><br>
             <form action="<?php echo htmlentities($_SERVER['REQUEST_URI'])?>" method="post" enctype="multipart/form-data">
                 <!-- <button name="add_pic">ADD PIC <i class="fas fa-camera"></i></button><br><br> -->
                 <input type="file" value="<?php echo $pic_destination ?>" name="pic" id="pic"><br><br>

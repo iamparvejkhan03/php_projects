@@ -66,6 +66,8 @@ button, input[type=submit], .form button.full_width_button, .mode_btn{
     color: black;
 }
 
+/*USER PROFILE PAGE*/
+
 button[name=delete_profile]{
     width: 100%;
     background-color: red;
@@ -76,6 +78,30 @@ button[name=update]{
     width: 100%;
     background-color: green;
     color: white;
+}
+
+.online_status_icon{
+    color: green;
+    position: absolute;
+    right: 35%;
+    top: 25%;
+    font-size: 20px;
+    transform: translate(-50%, -50%);
+}
+
+table tr td .online_status_icon{
+    position: relative;
+    right: 0%;
+    /* top: 0%; */
+    font-size: 15px;
+    transform: translate(-70%, 50%);
+}
+
+.error_text{
+    color: red;
+}
+p.success_text{
+    color: lightgreen;
 }
 
 /* button[name="mode"]{
@@ -470,8 +496,8 @@ table tr:nth-child(even), table tr td input:nth-child(even){
 .card_author_info img{
     border-radius: 50%;
     vertical-align: middle;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
 }
 
 .main_alike_with_styling .card .card_info .card_author_info .card_author_name_date {
@@ -537,10 +563,16 @@ button[name=post_a_blog_search]{
     text-align: left;
 }
 
+
+
 .card_author_info{
-    width: 40%;
+    width: 45%;
     justify-content: space-between;
     align-items: center;
+}
+
+.blog_content .card_author_info{
+    width: 40%;
 }
 
 .main_alike_with_styling .full_width_section{
@@ -740,6 +772,136 @@ footer .social_icons a{
     font-size: 20px;
     color: white;
 }
+
+/*CHAT BOX*/
+
+.chat_box_header, .chat_box_footer{
+    display: flex;
+    background-color: rgb(232, 208, 254);
+    padding: 15px 25px;
+    min-width: 100%;
+}
+.chat_box_header{
+    order: 1;
+}
+
+.chat_box_footer{
+    order: 3;
+}
+
+.chat_box_footer form{
+    display: flex;
+    flex-direction: row;
+    min-width: 100%;
+}
+
+.chat_box{
+    width: 33%;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+textarea.background_input{
+    background-color: white;
+    color: black;
+    resize: none;
+}
+
+textarea.background_input::placeholder{
+    color: black;
+    line-height: 30px;
+}
+
+.chat_box_header .card_author_info{
+    width: 40%;
+    justify-content: space-around;
+}
+
+.chat_box_footer textarea{
+    border-radius: 5px 0 0 5px;
+}
+
+.chat_box_footer button{
+    border-radius: 0 5px 5px 0;
+    background-color: rebeccapurple;
+    color: white;
+}
+
+.chat_box_body{
+    max-width: 100%;
+    height: 60vh;
+    background-color: white;
+    padding: 25px;
+    overflow-x: hidden;
+    order: 2;
+}
+
+.chat_box_body p{
+    /* color: black; */
+    text-align: left;
+    background-color: rebeccapurple;
+    display: inline-block;
+    padding: 15px;
+    border-radius: 15px 15px 0 15px;
+    margin: 10px 0;
+}
+
+.message_text{
+    max-width: 70%;
+}
+
+.chat_box_body div{
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.chat_box_body div.receiver_msg{
+    justify-content: flex-end;
+}
+
+.chat_box_body div img{
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+i{
+    font-size: 20px;
+}
+button.no_background_button{
+    background-color: transparent;
+    padding: 0 10px;
+    color: black;
+}
+
+p.small_text{
+    font-size: 14px;
+}
+
+.float_right{
+    float: right;
+    text-align: right;
+}
+
+.float_left{
+    /* float: left; */
+    text-align: left;
+}
+
+/*SCROLL BAR*/
+
+.chat_box_body::-webkit-scrollbar{
+    width: 5px;
+}
+
+.chat_box_body::-webkit-scrollbar-thumb{
+    background-color: rgb(156, 107, 202);
+    border-radius: 2px;
+}
+
+.chat_box_body::-webkit-scrollbar-thumb
 
 /*DARK & LIGHT MODE*/
 
