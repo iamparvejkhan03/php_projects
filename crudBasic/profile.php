@@ -41,6 +41,7 @@
                 $mysqli_select_query = mysqli_query($conn, $select);
                 while($rows = mysqli_fetch_assoc($mysqli_select_query)){
                     $id = $rows['id'];
+                    $_SESSION['my_id'] = $id;
                     $online_status = $rows['online_status'];
                     $pic_destination = $rows['pic'];
                     // print_r($rows);
@@ -111,6 +112,7 @@
         </div>
     </div>
     <?php include_once("footer.php") ?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>
 

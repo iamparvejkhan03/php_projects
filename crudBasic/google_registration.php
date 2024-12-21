@@ -80,10 +80,14 @@
     setcookie("password", "{$password}", (time()+86400*30));
     if(mysqli_num_rows($mysqli_select_query)>0){
         // echo "<h2 style='text-align: center; color:red'>Already registered with this account. Please try to login.</h2>";
+        $update = "UPDATE users SET online_status = 'online' WHERE email = '$email'";
+        $mysqli_update_query = mysqli_query($conn, $update);
+        $_SESSION['online_status'] = 'online';
         header("Location: profile.php");
     }else{
-        $insert = "INSERT INTO users (full_name, username, email, password, token, account_status, pic) VALUES ('$full_name', '$username', '$email', '$hash_password', '$token', 'active', '$pic')";
+        $insert = "INSERT INTO users (full_name, username, email, password, token, account_status, pic, online_status) VALUES ('$full_name', '$username', '$email', '$hash_password', '$token', 'active', '$pic', 'online')";
         $mysqli_insert_query = mysqli_query($conn, $insert);
+        $_SESSION['online_status'] = 'online';
         if($mysqli_insert_query){
             $subject = "Registration Successful!";
             $body = "Hi {$full_name},Your account has been created by using your Google account {$email}.";

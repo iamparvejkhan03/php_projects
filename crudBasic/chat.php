@@ -44,7 +44,7 @@
                     <img src="<?php echo $pic ?>" alt="user_img">
                     <div class="card_author_name_date">
                         <h4><?php echo $full_name ?></h4>
-                        <p class="small_text success_text">Active now</p>
+                        <p class="small_text active_now_text success_text">Active now</p>
                     </div>
                 </div>
             </div>
@@ -88,24 +88,23 @@
                         .then(datas => {
                             chat_box_body.innerHTML = "";
                                 datas.forEach(data => {
-                                // data.forEach(d => {
                                     if(data[2] == <?php echo $id?>){
                                         chat_box_body.innerHTML += `<div><img width='40px' height='40px' src='<?php echo $my_pic?>'><p class='light_background message_text'>${data[0]}</p></div>`
                                     }else{
                                         chat_box_body.innerHTML += `<div class='receiver_msg'><p class='dark_background float_right message_text'>${data[0]}</p></div>`;
                                     }
                                     chat_box_body.scrollTop = chat_box_body.scrollHeight;
-                                // })
                             })
                         });
                     }
                     setInterval(()=>{
                         loadMessages();
-                    }, 2000)
+                    }, 2000);
                 </script>
             </div>
         </section>
     </article>
     <?php include_once("footer.php");?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>

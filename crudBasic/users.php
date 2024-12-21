@@ -24,7 +24,8 @@
         //         location.href = "chat.php";
         //     })
         function start_chat_button(id){
-                location.href = `chat.php?id=${id}`;
+                // location.href = `chat.php?id=${id}`;
+                location.href = `websocket_chat.php?id=${id}`;
             }
     </script>
 </head>
@@ -65,5 +66,6 @@
         </table>
     </div>
     <?php include_once("footer.php") ?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>

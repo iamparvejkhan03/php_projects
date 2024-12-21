@@ -37,11 +37,12 @@
                         if(mysqli_num_rows($mysqli_select_query)>0){
                             echo "<p style='color:red'>Email already exists!</p>";
                         }else{
-                            $insert = "INSERT INTO users (full_name, username, email, password, token, account_status) VALUES ('$full_name', '$username', '$email', '$password', '$token', '$account_status')";
+                            $insert = "INSERT INTO users (full_name, username, email, password, token, account_status, online_status) VALUES ('$full_name', '$username', '$email', '$password', '$token', '$account_status','online')";
                             $mysqli_insert_query = mysqli_query($conn, $insert);
                             // echo "<p style='color:green'>User created!</p>";
                             $_SESSION['username'] = $username;
                             $_SESSION['password'] = $password;
+                            $_SESSION['online_status'] = 'online';
                             $_SESSION['login_notice'] = "<p style='color:green'>Your account has been created! Please check your inbox and activate your account by clicking on the link.</p>";
 
                             setcookie("username", "{$username}", (time()+86400*30));
@@ -72,5 +73,6 @@
         </div>
     </div>
     <?php include_once("footer.php") ?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>

@@ -6,7 +6,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php include("links.php") ?>
+    <?php 
+        include("links.php");
+    ?>
     <title>Website</title>
 </head>
 <body>
@@ -34,9 +36,9 @@
                 </div>
             </div>
             <div class="hero_image_container">
-                <!-- <img src="upload/hero_section_image.png" alt="hero_section_image"> -->
             </div>
     </div>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
     <?php include_once("footer.php") ?>
 </body>
 </html>

@@ -40,6 +40,7 @@
                                     $_SESSION['email'] = $rows['email'];
                                     $update = "UPDATE users SET online_status = 'online' WHERE id = '$id'";
                                     $mysqli_update_query = mysqli_query($conn, $update);
+                                    $_SESSION['online_status'] = 'online';
                                     header('Location: profile.php');
                                 }else{
                                     echo "<p style='color: red'>Password is wrong!</p>";
@@ -73,5 +74,6 @@
         </div>
     </div>
     <?php include_once("footer.php") ?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>

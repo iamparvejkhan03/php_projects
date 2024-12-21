@@ -22,6 +22,7 @@
         </div>
     </div>
     <?php include_once("footer.php") ?>
+    <button class="scroll_to_top"><i class="fa-solid fa-angle-up"></i></button>
 </body>
 </html>
 
