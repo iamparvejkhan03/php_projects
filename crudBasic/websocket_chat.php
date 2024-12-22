@@ -8,8 +8,20 @@
     $sender_id = $_SESSION['my_id'];
     $receiver_id = $_GET['id'];
     $message = null;
-    // $token = null;
-    
+    //SELECT PIC FROM USERS FOR SENDER AND RECEIVER
+
+    $select_pic = "SELECT id, pic FROM users WHERE id = '$sender_id' OR id = '$receiver_id'";
+    $mysqli_select_pic_query = mysqli_query($conn, $select_pic);
+    while($rows = mysqli_fetch_assoc($mysqli_select_pic_query)){
+        switch($rows['id']){
+            case $receiver_id:
+                $receiver_pic = $rows['pic'];
+                break;
+            case $sender_id:
+                $sender_pic = $rows['pic'];
+                break;
+        }
+    }
     ?>
     <title>WEBSOCKET CHAT</title>
 </head>
@@ -18,8 +30,9 @@
         <article class="main main_alike_with_styling">
         <section class="form chat_box">
             <div class="chat_box_header">
+            <button onclick="location.href = 'users.php'" class="no_background_button"><i class="fa fa-arrow-left"></i></button>
                 <div class="card_author_info">
-                    <img src="upload/SahidKhanImage.jpg" alt="user_img">
+                    <img src="<?php echo $receiver_pic ?>" alt="user_img">
                     <div class="card_author_name_date">
                         <h4>Sahid Khan</h4>
                         <p class="small_text active_now_text success_text">Active now</p>
@@ -28,11 +41,14 @@
             </div>
             <div class="chat_box_body">
                 <?php
+
+                    //SELECT ALL MESSAGES TO SHOW ON REFRESH STORED IN DB
                     $select = "SELECT * FROM messages WHERE (sender_id = '$sender_id' AND receiver_id = '$receiver_id') OR (sender_id = '$receiver_id' AND receiver_id = '$sender_id') ORDER BY msg_id ASC";
                     $mysqli_select_query = mysqli_query($conn, $select);
+
                     while($rows = mysqli_fetch_assoc($mysqli_select_query)){
                         if($sender_id == $rows['sender_id']){
-                            echo "<div class='sender_msg'><p class='light_background float_left message_text'>{$rows['message_text']}</p></div>";
+                            echo "<div class='sender_msg'><img width='40px' height='40px' src='{$sender_pic}'><p class='light_background float_left message_text'>{$rows['message_text']}</p></div>";
                         }else{
                             echo "<div class='receiver_msg'><p class='dark_background float_right message_text'>{$rows['message_text']}</p></div>";
                         }
@@ -56,31 +72,17 @@
 
                 //Send message button click event
                 send_button.addEventListener("click", function(){
-                    fetch(`get_token.php?receiver_id=${receiver_id}`).then(response => response.json()).then(data => {token = data; console.log(`Token is: ${token}`)});
+                    // fetch(`get_token.php?receiver_id=${receiver_id}`).then(response => response.json()).then(data => {token = data});
                     socket.send(JSON.stringify({
                         message_text : message.value,
                         sender_id : sender_id,
                         receiver_id : receiver_id,
-                        token : token
+                        // token : token
                     }));
-                    // socket.send(JSON.stringify({
-                    //     receiver_id : receiver_id,
-                    //     sender_id : sender_id,
-                    //     message_text : message.value
-                    // }));
 
-                    chat_box_body.innerHTML += `<div class='sender_msg'><p class='light_background float_left message_text'>${message.value}</p></div>`;
-                    // fetch("send_database.php",{
-                    //     method : 'POST',
-                    //     headers : {
-                    //         'Content-Type' : 'application/x-www-form-urlencoded',
-                    //     },
-                    //     body : `message=${encodeURIComponent(message.value)}&sender_id=${encodeURIComponent(sender_id)}&receiver_id=${encodeURIComponent(receiver_id)}`
-                    // }).then(response => response.text()).then(data => {
-                    //     console.log(data);
-                    //     message.value = "";
-                    // });
+                    chat_box_body.innerHTML += `<div class='sender_msg'><img width='40px' height='40px' src='<?php echo $sender_pic ?>'><p class='light_background float_left message_text'>${message.value}</p></div>`;
                     message.value = "";
+                    chat_box_body.scrollTop = chat_box_body.scrollHeight;
                 })
 
                 //Scroll chat box body to bottom
@@ -91,21 +93,15 @@
                 // Connection opened
                 socket.onopen = () => {
                     console.log('Connected to WebSocket server');
-                    // fetch(`get_token.php?receiver_id=${receiver_id}`).then(response => response.json()).then(data => {token = data; console.log(`Token is: ${token}`)});
-                    // socket.send(JSON.stringify({
-                    //     message_text : '',
-                    //     sender_id : sender_id,
-                    //     receiver_id : receiver_id,
-                    //     token : token
-                    // }));
                 };
 
                 // Listen for messages
                 socket.onmessage = (event) => {
                     data = JSON.parse(event.data);
-                    console.log("Message received by receiver:", data);
-                        if (data.sender_id !== sender_id && data.receiver_id === sender_id && data.token == token) {
+                    // console.log("Message received by receiver:", data);
+                        if (data.sender_id !== sender_id) {
                         chat_box_body.innerHTML += `<div class='receiver_msg'><p class='dark_background float_right message_text'>${data.message_text}</p></div>`;
+                        chat_box_body.scrollTop = chat_box_body.scrollHeight;
                         }
                 };
 
