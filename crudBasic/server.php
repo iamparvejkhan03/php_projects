@@ -8,6 +8,7 @@ use Ratchet\WebSocket\WsServer;
 
 class Chat implements MessageComponentInterface {
     protected $clients;
+    protected $token;
     protected $dbconn;
     protected $chatTokens; // Store tokens and associated connections
 
@@ -34,16 +35,23 @@ class Chat implements MessageComponentInterface {
         $result = mysqli_query($this->dbconn, $select);
 
         if ($row = mysqli_fetch_assoc($result)) {
-            $token = $row['token'];
+            $this->token = $row['token'];
         } else {
-            $token = $this->createChatToken();
-            // $insert = "INSERT INTO messages (sender_id, receiver_id, token) VALUES ('$sender_id', '$receiver_id', '$token')";
-            // mysqli_query($this->dbconn, $insert);
+            $this->token = $this->createChatToken();
         }
-        $this->joinChat($wsconn, $token);
+        // $this->joinChat($wsconn, $this->token);
+        // Ensure the connection is not duplicated in the chat token list
+        if (!isset($this->chatTokens[$this->token])) {
+            $this->chatTokens[$this->token] = [];
+        }
+
+        if (!in_array($wsconn, $this->chatTokens[$this->token], true)) {
+            $this->chatTokens[$this->token][] = $wsconn;
+            echo "Connection {$wsconn->resourceId} associated with token: {$this->token}\n";
+        }
 
         $message_text = $data['message_text'];
-        $insert = "INSERT INTO messages (sender_id, receiver_id, message_text, token) VALUES ('$sender_id', '$receiver_id', '$message_text', '$token')";
+        $insert = "INSERT INTO messages (sender_id, receiver_id, message_text, token) VALUES ('$sender_id', '$receiver_id', '$message_text', '$this->token')";
         $mysqli_insert_query = mysqli_query($this->dbconn, $insert);
         if($mysqli_insert_query){
             echo "Inserted data into database";
@@ -51,10 +59,9 @@ class Chat implements MessageComponentInterface {
             echo "Could not insert into database";
         }
         // Route the message only to connections associated with the token
-        foreach ($this->clients as $client) {
-            // if ($client !== $from) { // Do not echo message back to the sender
+        foreach ($this->chatTokens[$this->token] as $client) {
                 $client->send(json_encode([
-                        'token' => $token,
+                        'token' => $this->token,
                         'sender_id' => $sender_id,
                         'receiver_id' => $receiver_id,
                         'message_text' => $message_text
@@ -67,9 +74,13 @@ class Chat implements MessageComponentInterface {
     public function onClose(ConnectionInterface $wsconn) {
         // Detach connection
         $this->clients->detach($wsconn);
-        
-        
-
+        foreach($this->chatTokens as $token => &$connections){
+            foreach($connections as $index => $connection){
+                if($connection === $wsconn){
+                    unset($connections[$index]);
+                }
+            }
+        }
         echo "Connection {$wsconn->resourceId} has disconnected\n";
     }
 
@@ -81,21 +92,7 @@ class Chat implements MessageComponentInterface {
     // Generate a unique token for a new chat session
     public function createChatToken() {
         $tok = bin2hex(random_bytes(16)); // Generate a secure random token
-        // $this->chatTokens[$tok] = [];    // Initialize empty connections array
         return $tok;
-    }
-
-    // Assign a connection to a specific token
-    public function joinChat(ConnectionInterface $wsconn, $token) {
-        if (isset($this->chatTokens[$token])) {
-            $this->chatTokens[$token] = $wsconn;
-            echo "Connection {$wsconn->resourceId} joined chat with token: $token\n";
-        } else {
-            // echo "Invalid token: $token\n";
-            // $wsconn->send(json_encode(['error' => 'Invalid chat token']));
-            // $wsconn->close();
-            $this->chatTokens[$token] = $wsconn;
-        }
     }
 }
 include_once("database.php");
