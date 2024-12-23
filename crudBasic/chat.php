@@ -4,7 +4,9 @@
     <?php 
     include_once("links.php");
     include_once("database.php");
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
     if(!isset($_SESSION['username'])){
         header("Location: login.php");
     }else{

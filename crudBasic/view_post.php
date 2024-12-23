@@ -6,8 +6,8 @@
         include_once("database.php");
         include_once("date_difference.php");
         date_default_timezone_set("Asia/Kolkata");
-        session_start();
-        $_SESSION['last_seen'] = date("Y-m-d H:i:s");
+        // session_start();
+        // $_SESSION['last_seen'] = date("Y-m-d H:i:s");
         $slug =null;
         if(isset($_GET['slug'])){
             $slug = $_GET['slug'];
@@ -29,6 +29,7 @@
         }else{
             include_once("logout_header.php");
         } 
+        $_SESSION['last_seen'] = date("Y-m-d H:i:s");
     ?>
     <div class="main_alike_with_styling">
         <button class="post_a_blog_view" name="post_a_blog" onclick="location.href = 'post_blog.php'">POST A BLOG</button>

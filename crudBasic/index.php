@@ -1,6 +1,8 @@
 <?php
     include("database.php");
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -12,10 +14,10 @@
     <title>Website</title>
 </head>
 <body>
-    <?php if(isset($_SESSION['username']) && isset($_SESSION['password'])){
-        include_once("header.php");
-    }else{
+    <?php if(!isset($_SESSION)){
         include_once("logout_header.php");
+    }else{
+        include_once("header.php");
     } ?>
     <div class=" hero_section">
             <div class="form slider_content">

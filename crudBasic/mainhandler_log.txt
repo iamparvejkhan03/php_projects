@@ -1,0 +1,5 @@
+Array
+(
+    [type] => establish_notifications
+    [sender_id] => 57
+)
