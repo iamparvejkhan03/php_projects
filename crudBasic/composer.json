@@ -4,5 +4,13 @@
         "phpmailer/phpmailer": "^6.9",
         "nesbot/carbon": "^3.8",
         "cboden/ratchet": "^0.4.4"
+    },
+
+    "autoload": {
+      "psr-4": {
+        "App\\": "src/App",
+        "Library\\": "src/Library"
+      }
     }
 }
+  

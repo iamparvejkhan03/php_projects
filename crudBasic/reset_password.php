@@ -23,7 +23,7 @@
                             $update = "UPDATE users SET password = '$hash_password' WHERE token = '$token'";
                             $mysqli_update_query = mysqli_query($conn, $update);
                             if($mysqli_update_query){
-                                session_start();
+                                // session_start();
                                 $_SESSION['login_notice'] = "Password has been reset";
                                 $username = $_SESSION['username'];
                                 setcookie('username', "{$username}", (time()+86400*30));

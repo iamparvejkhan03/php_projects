@@ -2,27 +2,34 @@
     include("database.php");
     include("date_difference.php");
     date_default_timezone_set("Asia/Kolkata");
-    session_start();
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-    }
+    // session_start();
+    
     $pic_destination = null;
     // $last_active = date_create();
     $last_seen = null;
-    if(isset($_SESSION['last_seen'])){
-        $last_seen_session = $_SESSION['last_seen'];
-        $last_seen = date_difference($last_seen_session);
-    }
+    
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <?php include_once("links.php") ?>
     <title>User Profile</title>
 </head>
 <body>
-    <?php include_once("header.php");?>
+    <?php 
+    include_once("header.php");
+    if(!isset($_SESSION['username'])){
+        header("Location: login.php");
+    }
+    if(isset($_SESSION['last_seen'])){
+        $last_seen_session = $_SESSION['last_seen'];
+        $last_seen = date_difference($last_seen_session);
+    }
+    $sender_id = $_SESSION['my_id'];
+    
+    ?>
     <div class="main">
         <div class="form user_profile_box">
             <h3>USER PROFILE</h3><br>

@@ -1,7 +1,9 @@
 <?php
     include("database.php");
     include("google_client.php");
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>

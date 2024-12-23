@@ -878,8 +878,24 @@ i{
 }
 button.no_background_button{
     background-color: transparent;
-    padding: 0 10px;
+    /* padding: 0 10px; */
     color: black;
+}
+
+button.no_background_button i{
+    color: white;
+    font-size: 30px;
+    vertical-align: middle;
+}
+
+.message_counter{
+    color: white;
+    padding: 5px 10px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    transform: translate(-50%, 50%);
 }
 
 p.small_text{

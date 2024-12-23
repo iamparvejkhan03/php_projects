@@ -1,7 +1,9 @@
 <?php
     include("database.php");
     include_once("google_client.php");
-    session_start();
+    if(!isset($_SESSION)){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +43,7 @@
                                     $update = "UPDATE users SET online_status = 'online' WHERE id = '$id'";
                                     $mysqli_update_query = mysqli_query($conn, $update);
                                     $_SESSION['online_status'] = 'online';
-                                    header('Location: profile.php');
+                                    header("Location: profile.php?sender_id={$_SESSION['my_id']}");
                                 }else{
                                     echo "<p style='color: red'>Password is wrong!</p>";
                                 }
@@ -57,7 +59,7 @@
                 <input type="text" name="username" value="<?php if(isset($_COOKIE['username'])){echo $_COOKIE['username'];} ?>" placeholder="USERNAME" required><br><br>
                 <button class="eye_icon"><i class="far fa-eye"></i></button>
                 <script>
-                    let eye_icon = document.getElementById("eye_icon");
+                    let eye_icon = document.querySelector(".eye_icon");
                     eye_icon.addEventListener("click", function(e){
                         e.preventDefault();
                         $password_input_type = "text";

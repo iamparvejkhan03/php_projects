@@ -1,4 +1,6 @@
-<?php include("links.php") ?>
+<?php 
+    include("links.php");
+?>
 
 <div class="header">
 <a href="index.php"><img height="50px" src="upload/logo.png" alt="logo"></a>

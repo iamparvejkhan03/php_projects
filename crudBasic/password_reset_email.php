@@ -49,7 +49,7 @@
             $success_message = "Please check your inbox and click on the link to reset password.";
             $header = "Location: login.php";
             send_email($email, $full_name, $subject, $body, $success_message, $header);
-            session_start();
+            // session_start();
             // $_SESSION['login_notice'] = "Please check your inbox";
             $_SESSION['username'] = $username;
         }else{

@@ -60,6 +60,10 @@ class ComposerStaticInit5cd48b6645860e6f71f44390d4549abe
         array (
             'Monolog\\' => 8,
         ),
+        'L' => 
+        array (
+            'Library\\' => 8,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -81,6 +85,10 @@ class ComposerStaticInit5cd48b6645860e6f71f44390d4549abe
         array (
             'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -182,6 +190,10 @@ class ComposerStaticInit5cd48b6645860e6f71f44390d4549abe
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Library\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Library',
+        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -221,6 +233,10 @@ class ComposerStaticInit5cd48b6645860e6f71f44390d4549abe
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/App',
         ),
     );
 
