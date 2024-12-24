@@ -33,13 +33,13 @@
                 $mail->isSMTP();
                 $mail->Host = 'smtp.gmail.com'; // Set the SMTP server
                 $mail->SMTPAuth = true; // Enable SMTP authentication
-                $mail->Username = 'parvejsahid2@gmail.com'; // Your Gmail address
-                $mail->Password = 'hknc psif ovgy lkjy'; // Your Gmail password or app password
+                $mail->Username = ''; // Your Gmail address
+                $mail->Password = ''; // Your Gmail password or app password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable encryption
                 $mail->Port = 587; // TCP port to connect to
     
                 // Email settings
-                $mail->setFrom('parvejsahid2@gmail.com', 'Parvej Khan'); // Sender's email and name
+                $mail->setFrom('', ''); // Sender's email and name
                 $mail->addAddress("$email", "$full_name"); // Add recipient
     
                 $mail->isHTML(true); // Set email format to HTML
