@@ -10,7 +10,7 @@
         }
     ?>
     <!-- Place the first <script> tag in your HTML's <head> -->
-    <script src="https://cdn.tiny.cloud/1/d74ps4pecw18bu9j3qvz6b8mes2471bg7pzc6bq61ar9zm9f/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/API-KEY/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <title>CREATE BLOG</title>
 </head>
 <body>
